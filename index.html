@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
+
+    <script
+    src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+    integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+    crossorigin="anonymous"
+  ></script>
+
     <title>Weather Dashboard</title>
 </head>
 <body>
@@ -13,8 +20,8 @@
 
     <!-- CONTAINER FOR SEARCH BAR -->
     <div class="search-city-container">
-        <input type="text" placeholder="Search City">
-        <button type="submit" style="cursor: pointer;">Search</button>
+        <input type="text" placeholder="Search City" id="zip-search">
+        <button onclick=searchCity() type="submit" style="cursor: pointer;">Search</button>
     </div>
 
     <div class="container">
@@ -23,7 +30,8 @@
             <!-- LOCATION, DATE, AND TIME -->
             <div class="loc-date-time">
                 <p id="location" style="font-weight: bold; font-size: 40px;">Storrs, CT</p>
-                <p id="date-time">Tuesday October 12, 2023 12:30PM</p>
+                <p id="date">Tuesday October 12, 2023 12:30PM</p>
+                <img src="" alt="weather-icon">
             </div>
 
             <div class="current-conditions">
@@ -42,11 +50,14 @@
             </div>
         </div>
 
+        
         <!-- CONTAINER HOLDING 5 DAY FORECAST -->
+        <h2>5 Day Forecast:</h2>
         <div class="five-day-forecast"> 
 
             <div class="day-1-future">
                 <div class="weather-item">
+                    <img src="" alt="weather-icon">
                     <p style="font-weight: bold;">Temp:</p>
                     <p>Current Temp</p>
                 </div>
@@ -61,6 +72,7 @@
             </div>
 
             <div class="day-2-future">
+                <img src="" alt="weather-icon">
                 <div class="weather-item">
                     <p style="font-weight: bold;">Temp:</p>
                     <p>Current Temp</p>
@@ -76,6 +88,7 @@
             </div>
 
             <div class="day-3-future">
+                <img src="" alt="weather-icon">
                 <div class="weather-item">
                     <p style="font-weight: bold;">Temp:</p>
                     <p>Current Temp</p>
@@ -91,6 +104,7 @@
             </div>
 
             <div class="day-4-future">
+                <img src="" alt="weather-icon">
                 <div class="weather-item">
                     <p style="font-weight: bold;">Temp:</p>
                     <p>Current Temp</p>
@@ -106,6 +120,7 @@
             </div>
 
             <div class="day-5-future">
+                <img src="" alt="weather-icon">
                 <div class="weather-item">
                     <p style="font-weight: bold;">Temp:</p>
                     <p>Current Temp</p>
