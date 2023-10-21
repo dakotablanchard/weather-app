@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
 
-    <script
-    src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
-    integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
-    crossorigin="anonymous"
-  ></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+        integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
 
     <title>Weather Dashboard</title>
 </head>
+
 <body>
     <header>
         <h1>Weather Dashboard</h1>
@@ -36,24 +35,27 @@
 
             <div class="current-conditions">
                 <div class="weather-item">
-                    <p style="font-weight: bold;">Temp:</p>
-                    <p>Current Temp</p>
+                    <p style="font-weight: bold;">Temp:
+                        <span id="current-temp" style="font-weight: normal;"></span>
+                    </p>
                 </div>
                 <div class="weather-item">
-                    <p style="font-weight: bold;">Wind:</p>
-                    <p>Current Wind</p>
+                    <p style="font-weight: bold;">Wind:
+                        <span id="current-wind" style="font-weight: normal;"></span>
+                    </p>
                 </div>
                 <div class="weather-item">
-                    <p style="font-weight: bold;">Humitdity:</p>
-                    <p>Current Humitdity</p>
+                    <p style="font-weight: bold;">Humidity:
+                        <span id="current-humidity" style="font-weight: normal;"></span>
+                    </p>
                 </div>
             </div>
         </div>
 
-        
+
         <!-- CONTAINER HOLDING 5 DAY FORECAST -->
         <h2>5 Day Forecast:</h2>
-        <div class="five-day-forecast"> 
+        <div class="five-day-forecast">
 
             <div class="day-1-future">
                 <div class="weather-item">
@@ -66,8 +68,8 @@
                     <p>Current Wind</p>
                 </div>
                 <div class="weather-item">
-                    <p style="font-weight: bold;">Humitdity:</p>
-                    <p>Current Humitdity</p>
+                    <p style="font-weight: bold;">Humidity:</p>
+                    <p>Current Humidity</p>
                 </div>
             </div>
 
@@ -82,8 +84,8 @@
                     <p>Current Wind</p>
                 </div>
                 <div class="weather-item">
-                    <p style="font-weight: bold;">Humitdity:</p>
-                    <p>Current Humitdity</p>
+                    <p style="font-weight: bold;">Humidity:</p>
+                    <p>Current Humidity</p>
                 </div>
             </div>
 
@@ -98,8 +100,8 @@
                     <p>Current Wind</p>
                 </div>
                 <div class="weather-item">
-                    <p style="font-weight: bold;">Humitdity:</p>
-                    <p>Current Humitdity</p>
+                    <p style="font-weight: bold;">Humidity:</p>
+                    <p>Current Humidity</p>
                 </div>
             </div>
 
@@ -114,8 +116,8 @@
                     <p>Current Wind</p>
                 </div>
                 <div class="weather-item">
-                    <p style="font-weight: bold;">Humitdity:</p>
-                    <p>Current Humitdity</p>
+                    <p style="font-weight: bold;">Humidity:</p>
+                    <p>Current Humidity</p>
                 </div>
             </div>
 
@@ -130,8 +132,8 @@
                     <p>Current Wind</p>
                 </div>
                 <div class="weather-item">
-                    <p style="font-weight: bold;">Humitdity:</p>
-                    <p>Current Humitdity</p>
+                    <p style="font-weight: bold;">Humidity:</p>
+                    <p>Current Humidity</p>
                 </div>
             </div>
 
@@ -139,6 +141,7 @@
     </div>
 
 
-    <script src= "./assets/js/script.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
