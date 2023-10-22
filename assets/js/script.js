@@ -8,7 +8,7 @@ var currentWindEl = document.getElementById("current-wind")
 var currentHumidityEl = document.getElementById("current-humidity")
 var currentIconEl = document.getElementById("current-icon")
 
-var searchBarEl = document.querySelector(".search-city-container")
+var searchBarEl = document.querySelector(".search-city")
 var mainContainter = document.querySelector(".container")
 
 
@@ -47,18 +47,20 @@ var day5TempEl = document.getElementById("day-5-temp")
 var day5WindEl = document.getElementById("day-5-wind")
 var day5HumidEl = document.getElementById("day-5-humidity")
 
-// var currentWeatherArray = []
-
+var recentSearchArray = []
 // Set current date on screen using dayjs
 date.textContent = today.format("MMMM D, YYYY")
 
 
-function searchCity() { 
-    searchBarEl.style.transform = "translate(0%, 0%)"
+function searchBox() {
+     var typeZipCode = document.querySelector("#zip-search").value
+    searchCity(typeZipCode)
+ }
+
+function searchCity(zip) {
     mainContainter.style.display = ""
 
-    var zipCode = document.querySelector("#zip-search").value
-    var getCoordinates = "http://api.openweathermap.org/geo/1.0/zip?zip=" + zipCode + ",US&appid=" + apiKey
+    var getCoordinates = "http://api.openweathermap.org/geo/1.0/zip?zip=" + zip + ",US&appid=" + apiKey
 
     fetch(getCoordinates)
         .then(function (response) {
@@ -68,16 +70,15 @@ function searchCity() {
             var lat = data.lat
             var lon = data.lon
             // console.log(data)
-            getCurrentWeather(lat, lon)
-            fiveDayForecast(lat,lon)
+            getCurrentWeather(lat, lon, zip)
+            fiveDayForecast(lat, lon)
         });
-        
-        
+         
     }
     
-function getCurrentWeather(lat, lon) {
+    function getCurrentWeather(lat, lon, zip) {
         var currentWeatherEndpoint = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&units=imperial"
-
+        
         fetch(currentWeatherEndpoint)
         .then(function (response) {
             return response.json();
@@ -88,6 +89,8 @@ function getCurrentWeather(lat, lon) {
             var currentTemp = data.main.temp + " °F"
             var currentWind = data.wind.speed + " MPH"
             var currentHumidity = data.main.humidity + "%"
+            recentSearchArray.push({location: location, zip: zip});
+            localStorage.setItem("Zip Code", JSON.stringify(recentSearchArray))
             // console.log(data)
             logCurrentWeather(location, icon, currentTemp, currentWind, currentHumidity)
         });
@@ -101,12 +104,13 @@ function logCurrentWeather(location, icon, temp, wind, humidity) {
     currentWindEl.textContent = wind
     currentHumidityEl.textContent = humidity
 
-    var recentSearches = document.createElement("li")
+    recentSearches(location)
+
 }
 
 function fiveDayForecast(lat, lon) {
     var futureCastAPI = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&units=imperial"
-
+    
     fetch(futureCastAPI)
     .then(function (response) {
         return response.json();
@@ -127,22 +131,35 @@ function logFiveDayForecast(day1, day2, day3, day4, day5) {
     day3IconEl.src = "https://openweathermap.org/img/wn/" + day3.weather[0].icon + "@2x.png"
     day4IconEl.src = "https://openweathermap.org/img/wn/" + day4.weather[0].icon + "@2x.png"
     day5IconEl.src = "https://openweathermap.org/img/wn/" + day5.weather[0].icon + "@2x.png"
-
+    
     day1TempEl.textContent = day1.main.temp + " °F"
     day2TempEl.textContent = day2.main.temp + " °F"
     day3TempEl.textContent = day3.main.temp + " °F"
     day4TempEl.textContent = day4.main.temp + " °F"
     day5TempEl.textContent = day5.main.temp + " °F"
-
+    
     day1WindEl.textContent = day1.wind.speed + " MPH"
     day2WindEl.textContent = day2.wind.speed + " MPH"
     day3WindEl.textContent = day3.wind.speed + " MPH"
     day4WindEl.textContent = day4.wind.speed + " MPH"
     day5WindEl.textContent = day5.wind.speed + " MPH"
-
+    
     day1HumidEl.textContent = day1.main.humidity + "%"
     day2HumidEl.textContent = day2.main.humidity + "%"
     day3HumidEl.textContent = day3.main.humidity + "%"
     day4HumidEl.textContent = day4.main.humidity + "%"
     day5HumidEl.textContent = day5.main.humidity + "%"
+}
+
+function recentSearches(location) {
+
+    var recentSearchEl = document.querySelector(".recent-searches") 
+    var recentSearchBtn = document.createElement("li")
+    recentSearchBtn.setAttribute("style", "cursor: pointer")
+    recentSearchBtn.setAttribute("style", "font-weight: bold")
+    // recentSearchBtn.setAttribute("href", "#")
+    recentSearchBtn.textContent = location 
+    recentSearchEl.appendChild(recentSearchBtn)
+    // recentSearchEl.setAttribute("onclick", "searchCity()")
+
 }

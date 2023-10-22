@@ -1,5 +1,5 @@
 :root {
-    --ocean: rgb(56, 71, 158);
+    --ocean: rgb(25, 97, 145);
 
 }
 
@@ -8,7 +8,7 @@
 }
 
 header {
-    width: auto;
+    /* width: auto; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,17 +18,24 @@ header {
     background-color: var(--ocean)
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+}
+.forcast-container {
+    display: flex;
+    flex-direction: column;
+}
+
 .main-weather-container {
     font-size: 25px;
     padding: 10px;
     margin: 20px;
-    width: 75%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     border-radius: 10px;
     outline: 5px solid rgb(0, 0, 0);
-    margin-left: auto;
 }
 
 .current-conditions {
@@ -39,50 +46,66 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    /* outline: 5px solid rgb(0, 0, 0); */
+    flex-wrap: wrap;
+}
+
+.current-conditions > .weather-item > p {
+    padding: 5px;
 }
 
 h2 {
     font-size: 40px;
-    padding: 10px;
-    margin-right: 20px;
-    width: 75%;
-    margin-left: auto;
+    margin: 20px;
 }
 
 .five-day-forecast {
     padding: 10px;
-    margin-right: 20px;
-    width: 75%;
+    margin: 20px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
     border-radius: 10px;
     outline: 5px solid rgb(0, 0, 0);
-    margin-left: auto;
 }
 
-.search-city-container {
+.search-container {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+    align-items: center;
+}
+
+.search-city {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    float: left;
-    font-size: 500px;
     padding: 10px;
     margin: 20px;
-    width: 20%;
+    width: 35%;
     border-radius: 10px;
     outline: 5px solid rgb(0, 0, 0);
 }
 
-.search-city-container > input, button {
+ .search-city > p {
+    display: flex;
+    justify-content: center;
+ }
+
+.recent-searches {
+    font-size: 25px;
+    /* display: flex;
+    justify-content: space-between; */
+}
+
+.search-city > input, button {
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 10px;
     font-size: 30px;
 }
 
-.search-city-container > button {
+.search-city > button {
     color: white;
     background-color: var(--ocean);
 }
@@ -98,120 +121,32 @@ h2 {
     background-color: var(--ocean);
 }
 
-@media (max-width: 1900px) {
-
-    .main-weather-container {
-        margin: auto;
-        width: 95%;
-    }
-
-    h2 {
-        width: 95%;
-        margin: auto;
-    }
-
-    .five-day-forecast {
-        width: 95%;
-        margin: auto;
-    }
-
-}
-
-@media (max-width: 1234px) {
-
-
-    .main-weather-container {
-        margin-top: 20px;
+@media (max-width: 1420px) {
+    .search-city {
         width: 70%;
     }
-
-    h2 {
-        width: 95%;
-        margin: auto;
-    }
-
-    .five-day-forecast {
-        flex-wrap: wrap;
-        justify-content: center;
-        width: 95%;
-        border-radius: 10px;
-        margin: auto;
-        margin-bottom: 20px;
-    }
-
-    .weather-item {
-        font-size: 25px;
-    }
-    .search-city-container > input, button {
-        font-size: 25px;
-    }
-
 }
 
-@media (max-width: 979px) {
-    .day-1-future, .day-2-future, .day-3-future, .day-4-future, .day-5-future {
-        line-height: 30px;
-        margin: 10px;
-        padding: 10px;
+@media (max-width: 747px) {
+    .search-city {
+        width: 100%;
+    }
+}
+
+@media (max-width: 437px) {
+    .current-conditions {
+        font-size: 25px;
     }
 
-    
-    .main-weather-container {
-        margin-top: 20px;
-        width: 60%;
-    }
-    
-    p {
-        line-height: normal;
-    }
-
-    span {
-        display: flex;
-        padding: 10px;
-    }
-
-    .search-city-container > input, button {
-        padding: 10px;
-        margin-bottom: 10px;
-        border-radius: 10px;
+    .search-city > button {
         font-size: 20px;
     }
-}
 
-@media (max-width: 794px) {
-
-    .main-weather-container {
-        display: flex;
-        justify-content: center;
-    }
-
-    .five-day-forecast {
-        outline: none;
-    }
-
-    h2 {
-        display: flex;
-        justify-content: center;
-    }
-}
-
-@media (max-width: 400px) {
-    
     header {
-        font-size: 15px;
+        font-size: 17px;
     }
-    
-    .search-city-container > input, button {
-        padding: 10px;
-        margin-bottom: 10px;
-        border-radius: 10px;
-    }
-}
 
-@media (max-width: 380px) {
-
-    .search-city-container > input, button {
-        font-size: 20px;
+    .day-1-future, .day-2-future, .day-3-future, .day-4-future, .day-5-future {
+        line-height: 33px;
     }
-    
 }

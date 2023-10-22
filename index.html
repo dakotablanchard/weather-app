@@ -18,14 +18,18 @@
     </header>
 
     <!-- CONTAINER FOR SEARCH BAR -->
-    <div class="search-city-container" style="transform: translate(185%, 0%);">
-        <input type="text" placeholder="Enter zip code" id="zip-search">
-        <button onclick=searchCity() type="submit" style="cursor: pointer;">Search</button>
-        <ul class="recent-searches">
-            
-        </ul>
+    <div class="search-container">
+        <div class="search-city">
+            <input type="text" placeholder="Enter zip code" id="zip-search">
+            <button onclick=searchBox() type="submit" style="cursor: pointer;">Search</button>
+            <p>Recent Searches:</p>
+            <div class="recent-searches">
+
+            </div>
+        </div>
     </div>
 
+    <!-- <div class="container" style="display: none;"> -->
     <div class="container" style="display: none;">
         <!-- MAIN CONTAINER OR CURRENT CONDITIONS -->
         <div class="main-weather-container">
