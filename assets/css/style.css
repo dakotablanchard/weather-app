@@ -4,7 +4,7 @@
 }
 
 * {
-    margin: 0;
+    margin: 0px;
 }
 
 header {
@@ -22,6 +22,7 @@ header {
     display: flex;
     flex-direction: column;
 }
+
 .forcast-container {
     display: flex;
     flex-direction: column;
@@ -49,7 +50,7 @@ header {
     flex-wrap: wrap;
 }
 
-.current-conditions > .weather-item > p {
+.current-conditions>.weather-item>p {
     padding: 5px;
 }
 
@@ -87,30 +88,34 @@ h2 {
     outline: 5px solid rgb(0, 0, 0);
 }
 
- .search-city > p {
+.search-city>p {
     display: flex;
     justify-content: center;
- }
-
-.recent-searches {
-    font-size: 25px;
-    /* display: flex;
-    justify-content: space-between; */
 }
 
-.search-city > input, button {
+.recent-searches {
+    text-align: center;
+    font-size: 25px;
+}
+
+.search-city>input,
+button {
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 10px;
     font-size: 30px;
 }
 
-.search-city > button {
+.search-city>button {
     color: white;
     background-color: var(--ocean);
 }
 
-.day-1-future, .day-2-future, .day-3-future, .day-4-future, .day-5-future {
+.day-1-future,
+.day-2-future,
+.day-3-future,
+.day-4-future,
+.day-5-future {
     font-size: 30px;
     line-height: 40px;
     margin: 10px;
@@ -138,7 +143,7 @@ h2 {
         font-size: 25px;
     }
 
-    .search-city > button {
+    .search-city>button {
         font-size: 20px;
     }
 
@@ -146,7 +151,11 @@ h2 {
         font-size: 17px;
     }
 
-    .day-1-future, .day-2-future, .day-3-future, .day-4-future, .day-5-future {
+    .day-1-future,
+    .day-2-future,
+    .day-3-future,
+    .day-4-future,
+    .day-5-future {
         line-height: 33px;
     }
 }
