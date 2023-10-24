@@ -15,6 +15,8 @@ var currentIconEl = document.getElementById("current-icon")
 var searchBarEl = document.querySelector(".search-city")
 var mainContainter = document.querySelector(".container")
 
+var recentSearchEl = document.querySelector(".recent-searches")
+
 // Setting all the DOM elements as variables from the forecast-container:
 var day1DateEl = document.getElementById("day-1-date")
 day1DateEl.textContent = today.add(1, 'day').format('MMMM D, YYYY')
@@ -53,9 +55,6 @@ var day5HumidEl = document.getElementById("day-5-humidity")
 
 // This array will hold objects containing location and zip code from what the user searches.
 var recentSearchArray = []
-
-var newZip = ""
-
 
 // This variable will store the value of that the user types.
 var typeZipCode = document.querySelector("#zip-search")
@@ -117,7 +116,17 @@ function logCurrentWeather(location, icon, temp, wind, humidity) {
     currentWindEl.textContent = wind
     currentHumidityEl.textContent = humidity
 
-    recentSearches(location)
+    // If statement checks to see if the text box value is empty, if it is then it will not create another button.
+    // This prevents doubles of buttons appearing in the recent searches section because if a user is typing a location into
+    // the search box, it will not be empty thus running the recentSearches() function which will create a new button.
+    // However, if the user clicks on a button for a recent search rather than actually typing a location, the if statement will
+    // see that the value of the text box is empty and WILL NOT run the recenetSearches function()
+    if (typeZipCode.value === "") {
+        recentSearchArray = []
+        return
+    } else {
+        recentSearches()
+    }
 
 }
 
@@ -169,20 +178,21 @@ function logFiveDayForecast(day1, day2, day3, day4, day5) {
 }
 
 // This function is taking our search results and logging them under the search
-// bar. The purpose of this was to make them log as buttons so that when clicked
-// the user would then be shown weather conditions of that recent search.
-function recentSearches(location) {
+// bar as buttons to recall data.
+function recentSearches() {
     var getData = JSON.parse(localStorage.getItem("Zip-Code"))
 
-    newZip = getData[0].zip
+    var newZip = getData[0].zip
 
-    var recentSearchEl = document.querySelector(".recent-searches")
     var recentSearchBtn = document.createElement("button")
-    recentSearchBtn.setAttribute("style", "cursor: pointer")
-    recentSearchBtn.setAttribute("style", "font-weight: bold")
     recentSearchBtn.setAttribute("id", newZip)
-    // recentSearchBtn.setAttribute("onclick", searchCity(newZip))
+    recentSearchBtn.setAttribute("style", "cursor: pointer")
+    recentSearchBtn.addEventListener("click", function(event) {
+        searchCity(event.target.id)
+        typeZipCode.value = ""
+    })
     recentSearchBtn.textContent = getData[0].location
     recentSearchEl.appendChild(recentSearchBtn)
     recentSearchArray = []
+
 }
