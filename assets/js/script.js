@@ -54,6 +54,8 @@ var day5HumidEl = document.getElementById("day-5-humidity")
 // This array will hold objects containing location and zip code from what the user searches.
 var recentSearchArray = []
 
+var newZip = ""
+
 
 // This variable will store the value of that the user types.
 var typeZipCode = document.querySelector("#zip-search")
@@ -70,9 +72,7 @@ function searchBox() {
 // searchCity() function is doing.
 function searchCity(zip) {
     mainContainter.style.display = ""
-
     var getCoordinates = "https://api.openweathermap.org/geo/1.0/zip?zip=" + zip + ",US&appid=" + apiKey
-
     fetch(getCoordinates)
         .then(function (response) {
             return response.json();
@@ -180,10 +180,9 @@ function recentSearches(location) {
     var recentSearchBtn = document.createElement("button")
     recentSearchBtn.setAttribute("style", "cursor: pointer")
     recentSearchBtn.setAttribute("style", "font-weight: bold")
-
+    recentSearchBtn.setAttribute("id", newZip)
+    // recentSearchBtn.setAttribute("onclick", searchCity(newZip))
     recentSearchBtn.textContent = getData[0].location
     recentSearchEl.appendChild(recentSearchBtn)
     recentSearchArray = []
-    return
-
 }
